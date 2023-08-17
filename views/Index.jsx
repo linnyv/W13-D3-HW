@@ -1,4 +1,5 @@
 const React = require('react');
+import pokemon from "../models/pokemon";
 
 const styledH1 = {
   color: '#f1caf0',
@@ -7,12 +8,22 @@ const styledH1 = {
   backgroundColor: '#c49bfa',
 };
 
-class Index extends React.Component {
+export default class Index extends React.Component {
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   render() {
     return (
-      <h1 style={styledH1}>See All The Pokemon!</h1>
+      <div>
+        <h1 style={styledH1}>See All The Pokemon!</h1>
+        <ul>
+          {pokemon.map((p, index) => (
+            <li key={index}>{this.capitalizeFirstLetter(p.name)}</li>
+          ))}
+        </ul>
+      </div>
     );
   }
 }
-
-module.exports = Index;
