@@ -6,14 +6,19 @@ const server = express();
 
 const PORT = process.env.PORT || 3000;
 
-server.listen(PORT, ()=>{
-    console.log(`Server is listening at: ${PORT}`);
-});
+server.set('view engine', 'jsx');
+
+server.engine('jsx', require('express-react-views').createEngine());
 
 server.get("/", (req, res) => {
     res.send('Welcome to the Pokemon App!');
 });
 
 server.get("/pokemon", (req, res) => {
-    res.send(pokemon);
+    //res.send(pokemon);
+    res.render('index', { pokemon });
+});
+
+server.listen(PORT, ()=>{
+    console.log(`Server is listening at: ${PORT}`);
 });
