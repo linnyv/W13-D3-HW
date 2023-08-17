@@ -15,15 +15,14 @@ server.get("/", (req, res) => {
 });
 
 server.get("/pokemon", (req, res) => {
-    //res.send(pokemon);
     res.render('index', { pokemon });
 });
 
 server.get("/pokemon/:id", (req, res) => {
-    const { id } = req.params;
+    const id = req.params.id;
 
-    res.send(`Index number: ${id}`);
-})
+    res.render('show', {id, pokemon });
+});
 
 server.listen(PORT, ()=>{
     console.log(`Server is listening at: ${PORT}`);
