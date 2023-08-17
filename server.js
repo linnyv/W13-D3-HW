@@ -20,7 +20,9 @@ server.get("/pokemon", (req, res) => {
 });
 
 server.get("/pokemon/:id", (req, res) => {
-    res.send(req.params.id);
+    const { id } = req.params;
+
+    res.send(`Index number: ${id}`);
 })
 
 server.listen(PORT, ()=>{
