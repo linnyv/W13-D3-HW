@@ -1,5 +1,4 @@
 import React from 'react';
-import pokemon from '../models/pokemon';
 
 const styledH1 = {
   color: '#f1caf0',
@@ -16,12 +15,15 @@ export default class Index extends React.Component {
   render() {
     return (
       <div>
+        <nav>
+          <a href="/pokemon/new">Add a New Pokemon</a>
+        </nav>
         <h1 style={styledH1}>See All The Pokemon!</h1>
         <ul>
-          {pokemon.map((p, index) => (
+          {this.props.pokemon?.map((pokemon, index) => (
             <li key={index}>
-              <a href={`/pokemon/${index}`}>
-                {this.capitalizeFirstLetter(p.name)}
+              <a href={`/pokemon/${pokemon._id}`}>
+                {this.capitalizeFirstLetter(pokemon.name)}
               </a>
             </li>
           ))}
